@@ -5,12 +5,6 @@ dist: trusty
 services:
 - docker
 
-addons:
-  sonarcloud:
-    organization: "jaegertracing"
-    token:
-      secure: "rVchqUocABJz3IrfvKHRiQnNVKw9KhJ1LzZMmWBups4omTK1IcyWM/uehaYEnWbLC8XUrDkWU5B32lzTYyKiRzqXN+xoBWbmvq42+6kISG9HPiLKTatswRAiIlOxoSGADExUQSrcs9RBlXUeEIS3INuGynn2+J9gLhNix8JQXu3bJAYgsCg1BlTlqceU9nMJUMu9i8IEdeLw5I+95+FD2ocobNxrP/V4MBz5TioqhAuwlIy/DdEgIReBDv+BpUvhojaosnBC2VjQIIpMQo+sFeTkaiuVTHarmWEdVn0PCalPJ3xdz2ffQxttS+x33I1eRa2BDuKfgGLGS/0pyp0lEGtPzCpNK5kPh3Ecjm59CYjd6Guw0QGoajGWSfxPFBrHp37A1BV1QGAPUvR+Gb3W1yFI93d3TZqWe8iZOS+P0QRBwdG0732KzgaQmd+LVewh8cEwTtcqVa7+knaVUT9scCiAhFtBzbFGikKexfc+eaCbob2o7naI6sdwRFedofwwG1SVcbYdXdC+TcmESHo6J7q0Fd6f5nJHU5cQKEkPJkDqAiPuybRFMIG5FOFMjl29MEzQ6l2s4+GEEPqHF1HI0U1rzJ3sX/Yr3J3RUoIPfnAT1TP0723GRqwRnfyII2CaoMeCjPjwzBYRw5abUSMbHiSGf320mOX3RFTwGSJ663c="
-
 env:
   global:
   - DOCKER_VERSION=1.11.1-0~trusty
@@ -51,6 +45,11 @@ jobs:
   include:
     - stage: test
       env: [ NAME=unit-test ]
+      addons:
+        sonarcloud:
+          organization: "jaegertracing"
+          token:
+            secure: "rVchqUocABJz3IrfvKHRiQnNVKw9KhJ1LzZMmWBups4omTK1IcyWM/uehaYEnWbLC8XUrDkWU5B32lzTYyKiRzqXN+xoBWbmvq42+6kISG9HPiLKTatswRAiIlOxoSGADExUQSrcs9RBlXUeEIS3INuGynn2+J9gLhNix8JQXu3bJAYgsCg1BlTlqceU9nMJUMu9i8IEdeLw5I+95+FD2ocobNxrP/V4MBz5TioqhAuwlIy/DdEgIReBDv+BpUvhojaosnBC2VjQIIpMQo+sFeTkaiuVTHarmWEdVn0PCalPJ3xdz2ffQxttS+x33I1eRa2BDuKfgGLGS/0pyp0lEGtPzCpNK5kPh3Ecjm59CYjd6Guw0QGoajGWSfxPFBrHp37A1BV1QGAPUvR+Gb3W1yFI93d3TZqWe8iZOS+P0QRBwdG0732KzgaQmd+LVewh8cEwTtcqVa7+knaVUT9scCiAhFtBzbFGikKexfc+eaCbob2o7naI6sdwRFedofwwG1SVcbYdXdC+TcmESHo6J7q0Fd6f5nJHU5cQKEkPJkDqAiPuybRFMIG5FOFMjl29MEzQ6l2s4+GEEPqHF1HI0U1rzJ3sX/Yr3J3RUoIPfnAT1TP0723GRqwRnfyII2CaoMeCjPjwzBYRw5abUSMbHiSGf320mOX3RFTwGSJ663c="
       script: make test-travis && ./gradlew codeCoverageReport && bash <(curl -s https://codecov.io/bash) && sonar-scanner
 
     - stage: test
