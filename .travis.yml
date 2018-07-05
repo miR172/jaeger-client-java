@@ -49,7 +49,7 @@ jobs:
         sonarcloud:
           organization: "jaegertracing"
           token:
-            secure: "rVchqUocABJz3IrfvKHRiQnNVKw9KhJ1LzZMmWBups4omTK1IcyWM/uehaYEnWbLC8XUrDkWU5B32lzTYyKiRzqXN+xoBWbmvq42+6kISG9HPiLKTatswRAiIlOxoSGADExUQSrcs9RBlXUeEIS3INuGynn2+J9gLhNix8JQXu3bJAYgsCg1BlTlqceU9nMJUMu9i8IEdeLw5I+95+FD2ocobNxrP/V4MBz5TioqhAuwlIy/DdEgIReBDv+BpUvhojaosnBC2VjQIIpMQo+sFeTkaiuVTHarmWEdVn0PCalPJ3xdz2ffQxttS+x33I1eRa2BDuKfgGLGS/0pyp0lEGtPzCpNK5kPh3Ecjm59CYjd6Guw0QGoajGWSfxPFBrHp37A1BV1QGAPUvR+Gb3W1yFI93d3TZqWe8iZOS+P0QRBwdG0732KzgaQmd+LVewh8cEwTtcqVa7+knaVUT9scCiAhFtBzbFGikKexfc+eaCbob2o7naI6sdwRFedofwwG1SVcbYdXdC+TcmESHo6J7q0Fd6f5nJHU5cQKEkPJkDqAiPuybRFMIG5FOFMjl29MEzQ6l2s4+GEEPqHF1HI0U1rzJ3sX/Yr3J3RUoIPfnAT1TP0723GRqwRnfyII2CaoMeCjPjwzBYRw5abUSMbHiSGf320mOX3RFTwGSJ663c="
+            secure: "SLwdP1JWcCFXXhnWVAZvGAY6SxDlniLS/vHcCnWBC/9zxoyFWrPoWVBjhd237cbIxfJ0Cy2VcamDItFcUq43d6o2GM3ycIJ1ata/Ftixr1SvF365EBlgOuHnp13sXplefpGu3WOgT31xW6HGzOuM45hHIthIuVLMwx5GYggebzDo7X4Fn7ATLs/VDn5InSuhQ1ZQ5ibJzQbw5e6mZSxIk03A1g5mKxTF1zQgLyqZSMQz5xyFxvNTCTJM/1SX77EVtW6+2VoCiQg466Ur8cbh+XDirqaovGWdBCITu182nPXjgKwa+NDyocrcOsj3UrK5h5D5qQE5Q5VCiF8bqfaQVsBAh6FvZzCleu3gCcmkZuTnajGTEh22wrRG43PO2+mPzKZEhe5ywQws24vmfxG3fYVOSVMEe6ZxTHXD/6i403Ymknoy3p5gnHZhk3fIkt3O77Rg6XT6yYJ3dYl+q8+9t3VaQtMP43C77GufUgHeIzvmNc4bW8/uk0uHVJjVYZIjfXPdCyU6smUf+9vkjTdF5UJjTZNGO9Mhmkhe5mFOnC4PoE4C2DJIKIFiFNNXhOI4UZoDx/599XZypB6KzMvm9/tSMfrjc4ptH56FRVmkEKRJL3D2QFv5XjUjOqNYiBgre76PuBx+zLq87v1wa82Ff4c6tbu/+v+HVcSGkQC67j0="
       script: make test-travis && ./gradlew codeCoverageReport && bash <(curl -s https://codecov.io/bash) && sonar-scanner
 
     - stage: test
